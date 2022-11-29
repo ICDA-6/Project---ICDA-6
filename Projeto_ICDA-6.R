@@ -155,3 +155,5 @@ res_pca <- PCAshiny(Montreal)
 #logo uma análise visual aos dados não é possível. Quando identificados os padrões no conjunto, o número de dimensões a analisar pode
 #ser reduzido sem que haja uma perda significativa de informação, pois o foco recai sobre a análise das dimensões principais que
 #caracterizam o conjunto de dados.
+
+

@@ -110,3 +110,50 @@ boxPlot(Mundo$`Crime Index`)
 
 ggplot(Mundo, aes(x=City, y=`Safety Index`,))+
   geom_point()
+
+#Análise Implicita============================================================================================================
+
+View(Montreal)
+View(Mundo)
+
+str(Montreal)    
+str (Mundo)
+
+#Mudar tipo de variáveis
+
+summary(Montreal$year)
+
+Montreal$year[Montreal$year==2021] <- "Crime Recente"
+Montreal$year <- as.factor(Montreal$year)
+
+summary(Montreal$year)
+str((Montreal$year))
+
+summary(Montreal$neighbourhood)
+Montreal$neighbourhood <- as.factor(Montreal$neighbourhood)
+summary(Montreal$neighbourhood)
+
+#Machine Learning
+
+library(Factoshiny)
+
+res_pca <- PCAshiny(Mundo)
+
+correlacao <- cor(Mundo[,-2]) #Tirando a váriavel categórica
+
+corrplot::corrplot(correlacao, type = "upper")
+
+res_pca <- PCAshiny(Montreal)
+
+#Para a técnica tanto do shiny quanto do machine learning, foi utilizado a técnica PCA
+# Uma das técnicas mais utilizadas na redução de dimensionalidade é um método estatístico designado por Principal Component Analysis (PCA).
+#O PCA é caracterizado por identificar as dimensões ao longo das quais os dados se encontram mais dispersos. Desta forma, 
+#conseguimos identificar as dimensões que melhor diferenciam o conjunto de dados em análise, ou seja, os seus componentes principais.
+
+#Usando esta técnica, é possível realçar as semelhanças e diferenças neles existentes através da identificação de padrões. 
+#A sua identificação em dados caraterizados por grandes dimensões é difícil, uma vez que a sua representação gráfica não é viável, 
+#logo uma análise visual aos dados não é possível. Quando identificados os padrões no conjunto, o número de dimensões a analisar pode
+#ser reduzido sem que haja uma perda significativa de informação, pois o foco recai sobre a análise das dimensões principais que
+#caracterizam o conjunto de dados.
+
+
